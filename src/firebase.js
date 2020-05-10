@@ -4,14 +4,7 @@ import 'firebase/auth'
 import 'firebase/firestore'
 
 const config = {
-	apiKey: "AIzaSyDSXraRPL_yPf-jj9iREKLIU1X4vJRuoQg",
-    authDomain: "react-dashboard-88610.firebaseapp.com",
-    databaseURL: "https://react-dashboard-88610.firebaseio.com",
-    projectId: "react-dashboard-88610",
-    storageBucket: "react-dashboard-88610.appspot.com",
-    messagingSenderId: "836974457403",
-    appId: "1:836974457403:web:0a7a902e906da482dea21e",
-    measurementId: "G-1TGL926E08"
+	
 
 }
 	firebase.initializeApp(config);
