@@ -21,6 +21,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import firebase from './firebase'
+import Dashboard from './Dashboard'
 
 function Copyright() {
   return (
@@ -55,14 +56,37 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function App() {
+function App({logged}) {
+  //const setLogged = props.setLogged
+  return (
+    <BrowserRouter>
+    <Switch>
+
+    <Route exact={true} path='/' render={()=> <SignIn/>}/>
+    
+    <Route exact={true} path='/dashboard' render={()=> <Dashboard setLogged={logged}/>}/>
+    
+
+    </Switch>
+      
+    </BrowserRouter>
+    
+  )
+}
+
+function SignIn() {
   const classes = useStyles();
   //const [firebaseInitialized, setFirebaseInitialized] = useState(false)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [setLogged, logged] = useState(false);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
+    
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -72,7 +96,7 @@ export default function App() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form onSubmit={handleSubmit} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -142,3 +166,4 @@ export default function App() {
     }
   }
 }
+export default App;
